@@ -43,18 +43,22 @@ public class Canvas {
         frame.setVisible(true);
         panel.requestFocus();
         panel.requestFocusInWindow();
+
         panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
                 raster.clear();
-                if(e.getButton() == MouseEvent.BUTTON1) {
+                if(e.getButton() == MouseEvent.BUTTON1)
+                {
                     if (polygon.getCount() == 4)
                         polygon.clearPoints();
 
                     polygon.addPoint(new Point(e.getX(), e.getY()));
                 }
                 polygonRasterizer.rasterize(polygon);
-                if(e.getButton() == MouseEvent.BUTTON3) {
+
+                if(e.getButton() == MouseEvent.BUTTON3)
+                {
                     Filler seedFiller = new SeedFiller(raster, e.getX(), e.getY(),
                             0x00ff00, Color.black.getRGB());
                     seedFiller.fill();
